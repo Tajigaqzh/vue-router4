@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>vue-router4</title>
+</head>
+<body>
+<button id="btn1">首页</button>
+<button id="btn2">关于我</button>
+<button id="btn3">替换</button>
+<script type="module">
+    import {createWebHistory,createWebHashHistory} from './router.js';
+
+    // const hpHistory = createWebHistory();
+
+    const hpHistory = createWebHashHistory();
+
+
+
+    document.querySelector('#btn1').addEventListener('click', () => {
+        hpHistory.push('/')
+    })
+    document.querySelector('#btn2').addEventListener('click', () => {
+        hpHistory.push('/about')
+    })
+    document.querySelector('#btn3').addEventListener('click', () => {
+        hpHistory.replace('/XXX')
+    })
+    hpHistory.listen((to,from,{isBack})=>{
+        console.log("location",hpHistory.location)
+        console.log("state",hpHistory.state)
+        console.log(to,from,isBack)
+    })
+
+</script>
+
+
+</body>
+</html>
